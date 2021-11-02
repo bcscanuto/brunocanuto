@@ -1,21 +1,24 @@
-*** Settings ***
-Documentation        Base Test    
+***Settings***
+Documentation           Base Test
+Library     Browser
+Library     Collections
 
-Library              Browser    
-Library              factories/Users.py  
+Library     factories/Users.py
 
-Resource             Actions.robot   
+Resource    actions/_SharedActions.robot
+Resource    actions/AuthActions.robot
+Resource    actions/SignupActions.robot
 
-*** Variables ***
+Resource    Database.robot
+Resource    Helpers.robot
 
-${BASE_URL}         https://getgeeks-canuto.herokuapp.com 
+***Variables***
+${BASE_URL}         https://getgeeks-papito.herokuapp.com
 
-*** Keywords ***
-
-Start Session    
-    New Browser        chromium        headless=False            slowMo=00:00:00.5 
-    New Page          ${BASE_URL}
+***Keywords***
+Start Session
+    New Browser     chromium        headless=False      slowMo=00:00:00
+    New Page        ${BASE_URL}
 
 Finish Session
     Take Screenshot
-        

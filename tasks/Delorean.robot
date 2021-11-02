@@ -8,5 +8,6 @@ Back to the past
 
     Connect to Postgres
     Reset Env
+    Users Seed
     Disconnect from Database
 
