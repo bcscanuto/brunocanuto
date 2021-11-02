@@ -12,22 +12,22 @@ Go To Login Page
     Wait For Elements State     css=.login-form     visible     5
 
 Fill Credentials
-    [Arguments]         ${user}
+    [Arguments]                 ${user}
 
-    Fill Text           ${INPUT_EMAIL}        ${user}[email]
-    Fill Text           ${INPUT_PASS}         ${user}[password]
+    Fill Text                   ${INPUT_EMAIL}        ${user}[email]
+    Fill Text                   ${INPUT_PASS}         ${user}[password]
 
 Submit Credentials
-    Click               css=.submit-button >> text=Entrar
+    Click                       css=.submit-button >> text=Entrar
 
 User Should Be Logged In
-    [Arguments]         ${user}
+    [Arguments]                 ${user}
 
-    ${element}              Set Variable        css=a[href="/profile"]
-    ${expected_fullname}    Set Variable        ${user}[name] ${user}[lastname]
+    ${element}                  Set Variable        css=a[href="/profile"]
+    ${expected_fullname}        Set Variable        ${user}[name] ${user}[lastname]
 
-    Wait For Elements State     ${element}      visible     5
-    Get Text                    ${element}      equal       ${expected_fullname}
+    Wait For Elements State     ${element}          visible     5
+    Get Text                    ${element}          equal       ${expected_fullname}
 
 Should Be Type Email
-    Get Property           ${INPUT_EMAIL}        type        equal       email
+    Get Property                ${INPUT_EMAIL}      type        equal       email

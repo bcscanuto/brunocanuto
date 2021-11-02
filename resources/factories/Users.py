@@ -12,7 +12,7 @@ def factory_user():
         'name': fake.first_name(),
         'lastname': fake.last_name(),
         'email': fake.free_email(),
-        'password': 'pwd123'
+        'password': 'bcs123'
     }
 
 def factory_wrong_email():
@@ -23,14 +23,14 @@ def factory_wrong_email():
         'name': first_name,
         'lastname': fake.last_name(),
         'email': first_name.lower() + '&gmail.com',
-        'password': 'pwd123'
+        'password': 'bcs123'
     }
 
 
 def factory_user_login():
     return {
-        'name': 'Fernando',
-        'lastname': 'Papito',
-        'email': 'papito@hotmail.com',
-        'password': 'pwd123'
+        'name': 'Bruno',
+        'lastname': 'Canuto',
+        'email': 'bruno@gmail.com',
+        'password': 'bcs123'
     }

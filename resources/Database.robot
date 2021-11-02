@@ -2,6 +2,7 @@
 Documentation        Database  Helpers
 
 Library              DatabaseLibrary
+Library              factories/Users.py
 
 *** Keywords ***
 Connect to Postgres

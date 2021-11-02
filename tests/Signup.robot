@@ -1,42 +1,45 @@
 ***Settings***
 Documentation           Signup Test Suite
-Resource        ${EXECDIR}/resources/Base.robot
+Resource                ${EXECDIR}/resources/Base.robot
 
-Test Setup      Start Session
-Test Teardown   Finish Session
+Test Setup              Start Session
+Test Teardown           Finish Session
 
 ***Test Cases***
 
 Register a new user
 
-    ${user}     Factory User
+    ${user}             Factory User
 
     Go To Signup Form
-    Fill Signup Form  ${user}
+    Fill Signup Form    ${user}
     Submit Signup Form
     User Should Be Registered
 
 Duplicate user
-    [Tags]          attempt_signup
-    ${user}                  Factory User
-    Add User From Database   ${user}
+    [Tags]                      attempt_signup     duplicate
 
+    ${user}                     Factory User
+    Add User From Database      ${user}
+ 
     Go To Signup Form
-    Fill Signup Form  ${user}
-    Submit Signup Form
+    Fill Signup Form            ${user}
+    Submit Signup Form    
     Modal Content Should Be     Já temos um usuário com o e-mail informado.
 
 Wrong Email
-    [Tags]          attempt_signup
-    ${user}         Factory Wrong Email
+    [Tags]                  attempt_signup       wrong_email 
+
+    ${user}                 Factory Wrong Email
 
     Go To Signup Form
-    Fill Signup Form  ${user}
+    Fill Signup Form        ${user}
     Submit Signup Form
     Alert Span Should Be    O email está estranho
 
 Required Fields
-    [Tags]          attempt_signup      reqf
+    [Tags]                  attempt_signup      reqf
+
     @{expected_alerts}      Create List
     ...                     Cadê o seu nome?
     ...                     E o sobrenome?
@@ -69,10 +72,10 @@ Signup With Short Pass
     [Arguments]         ${short_pass}
 
     ${user}     Create Dictionary
-    ...         name=Fernando               lastname=Papito
-    ...         email=papito@hotmail.com    password=${short_pass}
+    ...         name=Bruno                  lastname=Canuto
+    ...         email=bruno@hotmail.com    password=${short_pass}
 
     Go To Signup Form
-    Fill Signup Form   ${user}
+    Fill Signup Form        ${user}
     Submit Signup Form
     Alert Span Should Be    Informe uma senha com pelo menos 6 caracteres

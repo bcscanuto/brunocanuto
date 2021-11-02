@@ -13,7 +13,7 @@ Resource    Database.robot
 Resource    Helpers.robot
 
 ***Variables***
-${BASE_URL}         https://getgeeks-papito.herokuapp.com
+${BASE_URL}         https://getgeeks-canuto.herokuapp.com
 
 ***Keywords***
 Start Session

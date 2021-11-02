@@ -7,20 +7,21 @@ Test Teardown   Finish Session
 
 ***Test Cases***
 User login
+    [Tags]          login    
 
-    ${user}                  Factory User Login
+    ${user}                     Factory User Login
 
     Go To Login Page
-    Fill Credentials        ${user}
+    Fill Credentials            ${user}
     Submit Credentials
-    User Should Be Logged In        ${user}
+    User Should Be Logged In    ${user}
 
 Incorrect Pass
     [Tags]          inv_pass
-    ${user}         Create Dictionary       email=papito@hotmail.com        password=abc123
+    ${user}         Create Dictionary       email=bruno@hotmail.com        password=abc123
 
     Go To Login Page
-    Fill Credentials    ${user}
+    Fill Credentials            ${user}
     Submit Credentials
     Modal Content Should Be     Usuário e/ou senha inválidos.
 
@@ -29,13 +30,13 @@ User not found
     ${user}         Create Dictionary       email=papito@404.com        password=abc123
 
     Go To Login Page
-    Fill Credentials    ${user}
+    Fill Credentials            ${user}
     Submit Credentials
     Modal Content Should Be     Usuário e/ou senha inválidos.
 
 Incorret Email
     [Tags]          inv_email
-    ${user}         Create Dictionary       email=papito.com.br        password=abc123
+    ${user}         Create Dictionary       email=bruno.com.br        password=abc123
 
     Go To Login Page
     Fill Credentials    ${user}
