@@ -18,7 +18,7 @@ User login
 
 Incorrect Pass
     [Tags]          inv_pass
-    ${user}         Create Dictionary       email=bruno@hotmail.com        password=abc123
+    ${user}         Create Dictionary       email=bruno@gmail.com        password=abc123
 
     Go To Login Page
     Fill Credentials            ${user}
@@ -27,7 +27,7 @@ Incorrect Pass
 
 User not found
     [Tags]          user_404
-    ${user}         Create Dictionary       email=papito@404.com        password=abc123
+    ${user}         Create Dictionary       email=bruno@404.com        password=abc123
 
     Go To Login Page
     Fill Credentials            ${user}
@@ -42,6 +42,40 @@ Incorret Email
     Fill Credentials    ${user}
     Submit Credentials
     Should Be Type Email
+
+Required Email Login
+    [Tags]                  desafio                 req_email
+    ${user}                 Create Dictionary       email=        password=abc123
+
+    Go To Login Page
+    Fill Credentials        ${user}
+    Submit Credentials
+    Alert Span Should Be    E-mail obrigatório
+
+Required Password Login
+    [Tags]                  desafio                 req_pass
+    ${user}                 Create Dictionary       email=bruno@gmail.com   password=
+
+    Go To Login Page
+    Fill Credentials        ${user}
+    Submit Credentials
+    Alert Span Should Be    Senha obrigatória
+
+Required Fields Login
+    [Tags]                  desafio                 req_fields
+    ${user}                 Create Dictionary       email=          password=
+   
+    @{expected_alerts}      Create List
+    ...                     E-mail obrigatório
+    ...                     Senha obrigatória
+
+    Go To Login Page
+    Fill Credentials        ${user}
+    Submit Credentials
+    Alert Spans Should Be   ${expected_alerts}  
+    
+
+
 
 # Desafio 1 do módulo PRO
 # Automatizar 3 novos casos de testes: Email obrigatório, Senha obrigatória, Campos obrigatórios
