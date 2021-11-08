@@ -74,4 +74,3 @@ Required Fields Login
     Submit Credentials
     Alert Spans Should Be   ${expected_alerts}  
     
-
